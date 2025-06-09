@@ -16,66 +16,65 @@ function operate(a, b, operatorFunction) {
     return operatorFunction(parseInt(a), parseInt(b));
 };
 
-// Event listener to get number input
+// Check if an operator is selected
+function checkOperator() {
+    if (operator && secondNumber > 0) {
+        operate(firstNumber, secondNumber, operator);
+        display.textContent =+ result;
+        firstNumber = result;
+        secondNumber = "";
+}};
+
+// Event listener to get input
 const display = document.querySelector(".display")
 const buttonPressed = document.querySelectorAll("button");
 
+// Functions for the buttons
 buttonPressed.forEach((button) => {
     button.addEventListener("click", () => {
         const input = button.textContent;
 
         switch(input) {
             case "+":
-                if (operator) {
-                    operate(firstNumber, secondNumber, operator);
-                    display.textContent =+ result;
-                    firstNumber = result;
-                    secondNumber = "";
-                }
+                checkOperator();
+
                 operator = add;
                 shouldClearDisplay = true;
                 console.log(operator);
                 break;
             
             case "-":
-                if (operator) {
-                    operate(firstNumber, secondNumber, operator);
-                    display.textContent =+ result;
-                    firstNumber = result;
-                    secondNumber = "";
-                }
+                checkOperator();
+
                 operator = subtract;
                 shouldClearDisplay = true;
                 console.log(operator);
                 break;
 
             case "x":
-                if (operator) {
-                    operate(firstNumber, secondNumber, operator);
-                    display.textContent =+ result;
-                    firstNumber = result;
-                    secondNumber = "";
-                }
+                checkOperator();
+
                 operator = multiply;
                 shouldClearDisplay = true;
                 console.log(operator);
                 break;
 
             case "/":
-                if (operator) {
-                    operate(firstNumber, secondNumber, operator);
-                    display.textContent =+ result;
-                    firstNumber = result;
-                    secondNumber = "";
-                }
+                checkOperator();
+
                 operator = divide;
                 shouldClearDisplay = true;
                 console.log(operator);
                 break;
 
             case "=":
-                console.log(operate(firstNumber, secondNumber, operator));
-                display.textContent =+ result;
+                if (operator === divide && secondNumber === 0) {
+                    console.log("operator", operator)
+                    display.textContent = "Zero division error"
+                } else if (operator) {
+                    console.log(operate(firstNumber, secondNumber, operator));
+                    display.textContent =+ result;
+                } else {}
                 break;
 
             case "AC":
