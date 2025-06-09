@@ -18,6 +18,11 @@ function divide(a, b) {
     }
 };
 
+// Rounds the result to 6 decimals
+function roundDecimal(value, decimals = 6) {
+    return parseFloat(value.toFixed(decimals)).toString();
+}
+
 // Function to pick the right operator
 function operate(a, b, operatorFunction) {
     return operatorFunction(parseInt(a), parseInt(b));
@@ -27,7 +32,7 @@ function operate(a, b, operatorFunction) {
 function checkOperator() {
     if (operator) {
         operate(firstNumber, secondNumber, operator);
-        display.textContent = result;
+        display.textContent = roundDecimal(result);
         firstNumber = result;
         secondNumber = "";
 }};
@@ -90,7 +95,7 @@ buttonPressed.forEach((button) => {
             case "=":
                 if (operator) {
                     console.log(operate(firstNumber, secondNumber, operator));
-                    display.textContent = result;
+                    display.textContent = roundDecimal(result);
                     displayCalc.textContent += secondNumber;
                     resultShown = true;
                     secondNumber = "";

@@ -1,14 +1,24 @@
 body {
-    background-color: #d0e8f2;
+    background-color: #b6d6f7; /* soft pastel pink */
 }
 
-div > h1 {
+
+div > h1,
+div > p {
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: "Nunito", sans-serif;
     color: #333;
+    font-size: 2.5rem;
     margin: 25px;
+    margin-bottom: 0px;
+}
+
+.madeBy {
+    font-size: 12px;
+    margin: 0px;
+    margin-bottom: 25px;
 }
 
 .container {
@@ -25,7 +35,7 @@ div > h1 {
     padding: 20px;
     gap: 5px;
     border-radius: 16px;
-    background-color: #b8dce9;
+    background-color: #f2e9f7;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -37,8 +47,8 @@ div > h1 {
     font-family: "Nunito", sans-serif;
     font-size: 1.5rem;
     font-weight: 600;
-    color: #333333;
-    background-color: #fdfdfd;
+    color: #2e2e2e;
+    background-color: #f2fffb;;
     border-radius: 12px;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -70,6 +80,7 @@ button {
     font-weight: 600;
     color: #333333;
     transition: transform 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .button:hover {
@@ -78,23 +89,23 @@ button {
 }
 
 button:active {
-    transform: scale(0.9);
+    transform: scale(0.8);
 }
 
-#ac { background-color: #ff906a; }
-#ac:hover { background-color: #ff7a4d; }
+#ac { background-color: #fdbb9d; }
+#ac:hover { background-color: #f8a88d;}
 
-#del { background-color: #f7b7a3; }
-#del:hover { background-color: #f59c7a; }
+#del { background-color: #b6d6f7; }
+#del:hover { background-color: #a0c8f0; }
 
-.number { background-color: #f2c6de; }
-.number:hover { background-color: #f0b0d1; }
+.number { background-color: #fef1b2; }
+.number:hover { background-color: #fce89b; }
 
-.operator { background-color: #d8b4e2; }
-.operator:hover { background-color: #cda0d6; }
+.operator { background-color: #d6c8f6; }
+.operator:hover { background-color: #c4b0f2; }
 
-#equal { background-color: #ffe29e; }
-#equal:hover { background-color: #ffd47a; }
+#equal { background-color: #c4f2c0; }
+#equal:hover { background-color: #a8e6a0; }
 
-#dot { background-color: #f0e2cf; }
-#dot:hover { background-color: #e6d4b3; }
+#dot { background-color: #f6c9d1; }
+#dot:hover { background-color: #f2b0c0; }
