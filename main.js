@@ -18,38 +18,100 @@ function operate(a, b, operatorFunction) {
 
 // Event listener to get number input
 const display = document.querySelector(".display")
-const numbers = document.querySelectorAll(".number");
+const buttonPressed = document.querySelectorAll("button");
 
-numbers.forEach((number) => {
-    number.addEventListener("click", () => {
-        const input = number.textContent;
+buttonPressed.forEach((button) => {
+    button.addEventListener("click", () => {
+        const input = button.textContent;
 
-        if (operator === add) {
-            if(shouldClearDisplay) {
-                display.textContent = "";
-                shouldClearDisplay = false;
-            } 
+        switch(input) {
+            case "+":
+                if (operator) {
+                    operate(firstNumber, secondNumber, operator);
+                    display.textContent =+ result;
+                    firstNumber = result;
+                    secondNumber = "";
+                }
+                operator = add;
+                shouldClearDisplay = true;
+                console.log(operator);
+                break;
+            
+            case "-":
+                if (operator) {
+                    operate(firstNumber, secondNumber, operator);
+                    display.textContent =+ result;
+                    firstNumber = result;
+                    secondNumber = "";
+                }
+                operator = subtract;
+                shouldClearDisplay = true;
+                console.log(operator);
+                break;
 
-            display.textContent += input;
-            secondNumber += input;
-            console.log("secondNumber", secondNumber);
-        } else {
-            display.textContent += input;
-            firstNumber += input;
-            console.log("firstNumber", firstNumber);
+            case "x":
+                if (operator) {
+                    operate(firstNumber, secondNumber, operator);
+                    display.textContent =+ result;
+                    firstNumber = result;
+                    secondNumber = "";
+                }
+                operator = multiply;
+                shouldClearDisplay = true;
+                console.log(operator);
+                break;
+
+            case "/":
+                if (operator) {
+                    operate(firstNumber, secondNumber, operator);
+                    display.textContent =+ result;
+                    firstNumber = result;
+                    secondNumber = "";
+                }
+                operator = divide;
+                shouldClearDisplay = true;
+                console.log(operator);
+                break;
+
+            case "=":
+                console.log(operate(firstNumber, secondNumber, operator));
+                display.textContent =+ result;
+                break;
+
+            case "AC":
+                display.textContent = ""
+                firstNumber = "";
+                secondNumber = "";
+                result = 0;
+                operator = 0;
+                break;
+
+            case "DEL":
+                if (operator) {
+                    secondNumber = secondNumber.slice(0, -1);
+                    display.textContent = display.textContent.slice(0, -1);
+                } else {
+                display.textContent = display.textContent.slice(0, -1);
+                firstNumber = firstNumber.slice(0, -1);
+                }
+                break;
+
+            // input for numbers
+            default:
+                if (operator) {
+                    if(shouldClearDisplay) {
+                    display.textContent = "";
+                    shouldClearDisplay = false;
+                }
+
+                    display.textContent += input;
+                    secondNumber += input;
+                    console.log("secondNumber", secondNumber);
+                } else {
+                    display.textContent += input;
+                    firstNumber += input;
+                    console.log("firstNumber", firstNumber);
+                }
         }
     });
-});
-
-const addButton = document.querySelector("#add");
-addButton.addEventListener("click", () => {
-    operator = add;
-    shouldClearDisplay = true;
-    console.log(operator);
-});
-
-const resultButton = document.querySelector("#equal")
-resultButton.addEventListener("click", () => {
-    operate(firstNumber, secondNumber, operator);
-    display.textContent =+ result;
 });
