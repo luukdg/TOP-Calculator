@@ -45,6 +45,10 @@ div > h1 {
     align-content: flex-end;
 }
 
+.display-calc {
+    font-size: 1rem;
+}
+
 .button-row {
     display: flex;
     justify-content: center;
@@ -65,11 +69,16 @@ button {
     font-size: 1.3rem;
     font-weight: 600;
     color: #333333;
+    transition: transform 0.1s ease;
 }
 
 .button:hover {
     cursor: pointer;
     background-color: #f0f0f0;
+}
+
+button:active {
+    transform: scale(0.9);
 }
 
 #ac { background-color: #ff906a; }

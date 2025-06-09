@@ -4,12 +4,19 @@ let secondNumber = "";
 let result = 0;
 let operator = 0;
 let shouldClearDisplay = false;
+let resultShown = false;
 
 // Functions for add, subtract, multiply and divide
 function add(a, b) {return result = a + b;}
 function subtract(a, b) {return result = a - b;}
 function multiply(a, b) {return result = a * b;}
-function divide(a, b) {return result = a / b;}
+function divide(a, b) {
+    if (b === 0) {
+        return result = NaN
+    } else {
+        return result = a / b;
+    }
+};
 
 // Function to pick the right operator
 function operate(a, b, operatorFunction) {
@@ -18,15 +25,28 @@ function operate(a, b, operatorFunction) {
 
 // Check if an operator is selected
 function checkOperator() {
-    if (operator && secondNumber > 0) {
+    if (operator) {
         operate(firstNumber, secondNumber, operator);
-        display.textContent =+ result;
+        display.textContent = result;
         firstNumber = result;
         secondNumber = "";
 }};
 
+// Check if is screen should be cleared after result
+function newDigitCheck () {
+    if (resultShown) {
+        display.textContent = ""
+        firstNumber = "";
+        secondNumber = "";
+        result = 0;
+        operator = 0;
+        resultShown = false;
+    }
+};
+
 // Event listener to get input
-const display = document.querySelector(".display")
+const displayCalc = document.querySelector(".display-calc")
+const display = document.querySelector(".display-operator")
 const buttonPressed = document.querySelectorAll("button");
 
 // Functions for the buttons
@@ -38,47 +58,50 @@ buttonPressed.forEach((button) => {
             case "+":
                 checkOperator();
 
+                displayCalc.textContent = firstNumber + " + ";
                 operator = add;
                 shouldClearDisplay = true;
-                console.log(operator);
                 break;
             
             case "-":
                 checkOperator();
 
+                displayCalc.textContent = firstNumber + " - ";
                 operator = subtract;
                 shouldClearDisplay = true;
-                console.log(operator);
                 break;
 
             case "x":
                 checkOperator();
 
+                displayCalc.textContent = firstNumber + " x ";
                 operator = multiply;
                 shouldClearDisplay = true;
-                console.log(operator);
                 break;
 
             case "/":
                 checkOperator();
 
+                displayCalc.textContent = firstNumber + " / ";
                 operator = divide;
                 shouldClearDisplay = true;
-                console.log(operator);
                 break;
 
             case "=":
-                if (operator === divide && secondNumber === 0) {
-                    console.log("operator", operator)
-                    display.textContent = "Zero division error"
-                } else if (operator) {
+                if (operator) {
                     console.log(operate(firstNumber, secondNumber, operator));
-                    display.textContent =+ result;
+                    display.textContent = result;
+                    displayCalc.textContent += secondNumber;
+                    resultShown = true;
+                    secondNumber = "";
+                    firstNumber = result;
+                    operator = 0;
                 } else {}
                 break;
 
             case "AC":
                 display.textContent = ""
+                displayCalc.textContent = ""
                 firstNumber = "";
                 secondNumber = "";
                 result = 0;
@@ -107,6 +130,7 @@ buttonPressed.forEach((button) => {
                     secondNumber += input;
                     console.log("secondNumber", secondNumber);
                 } else {
+                    newDigitCheck();
                     display.textContent += input;
                     firstNumber += input;
                     console.log("firstNumber", firstNumber);
