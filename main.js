@@ -104,7 +104,7 @@ buttonPressed.forEach((button) => {
             // Calculates the result and does nothing if no operator is selected
             case "=":
                 if (operator) {
-                    console.log(result = operate(firstNumber, secondNumber, operator));
+                    result = operate(firstNumber, secondNumber, operator);
                     display.textContent = roundDecimal(result);
                     displayCalc.textContent += secondNumber;
                     resultShown = true;
@@ -159,12 +159,10 @@ buttonPressed.forEach((button) => {
 
                     display.textContent += input;
                     secondNumber += input;
-                    console.log("secondNumber", secondNumber);
                 } else {
                     newDigitCheck();
                     display.textContent += input;
                     firstNumber += input;
-                    console.log("firstNumber", firstNumber);
                 }
         }
     });
