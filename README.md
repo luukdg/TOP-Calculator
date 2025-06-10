@@ -1,6 +1,9 @@
 # Calculator
 A simple calculator built with HTML, CSS, and JavaScript as part of the final project in the Foundations Course from The Odin Project. This project demonstrates core web development skills including layout design, DOM manipulation, and event handling.
 
+## 📸 Screenshot
+![Calculator Screenshot](./image/calculator.png)
+
 ## 📂 Live Demo
 https://luukdg.github.io/TOP-Calculator/
 Live Demo
@@ -20,10 +23,6 @@ HTML – Structure and layout
 CSS – Styling and responsiveness
 
 JavaScript – Calculator logic and interaction
-
-## 📸 Screenshot
-(You can add a screenshot here if you'd like. Just upload it and link it like this below)
-![Calculator Screenshot](.image/calculator.png)
 
 ## 📚 What I Learned
 How to structure a basic web project from scratch
