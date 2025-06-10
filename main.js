@@ -7,31 +7,26 @@ let shouldClearDisplay = false;
 let resultShown = false;
 
 // Functions for add, subtract, multiply and divide
-function add(a, b) {return result = a + b;}
-function subtract(a, b) {return result = a - b;}
-function multiply(a, b) {return result = a * b;}
-function divide(a, b) {
-    if (b === 0) {
-        return result = NaN
-    } else {
-        return result = a / b;
-    }
-};
+function add(a, b) {return a + b;}
+function subtract(a, b) {return a - b;}
+function multiply(a, b) {return a * b;}
+function divide(a, b) { return a / b;};
+function remainder(a,b) {return a % b;}
 
 // Rounds the result to 6 decimals
 function roundDecimal(value, decimals = 6) {
     return parseFloat(value.toFixed(decimals)).toString();
 }
 
-// Function to pick the right operator
+// Function to pick the right operator --- And it converts a and b from string to a parseFloat
 function operate(a, b, operatorFunction) {
-    return operatorFunction(parseInt(a), parseInt(b));
+    return operatorFunction(parseFloat(a), parseFloat(b));
 };
 
 // Check if an operator is selected
 function checkOperator() {
     if (operator) {
-        operate(firstNumber, secondNumber, operator);
+        result = operate(firstNumber, secondNumber, operator);
         display.textContent = roundDecimal(result);
         firstNumber = result;
         secondNumber = "";
@@ -49,7 +44,7 @@ function newDigitCheck () {
     }
 };
 
-// Event listener to get input
+// Query selectors
 const displayCalc = document.querySelector(".display-calc")
 const display = document.querySelector(".display-operator")
 const buttonPressed = document.querySelectorAll("button");
@@ -57,9 +52,11 @@ const buttonPressed = document.querySelectorAll("button");
 // Functions for the buttons
 buttonPressed.forEach((button) => {
     button.addEventListener("click", () => {
+        // Text content of the buttons
         const input = button.textContent;
 
         switch(input) {
+            // Add operator
             case "+":
                 checkOperator();
 
@@ -68,6 +65,7 @@ buttonPressed.forEach((button) => {
                 shouldClearDisplay = true;
                 break;
             
+            // Subtract operator
             case "-":
                 checkOperator();
 
@@ -76,6 +74,7 @@ buttonPressed.forEach((button) => {
                 shouldClearDisplay = true;
                 break;
 
+            // Multiply operator
             case "x":
                 checkOperator();
 
@@ -84,6 +83,7 @@ buttonPressed.forEach((button) => {
                 shouldClearDisplay = true;
                 break;
 
+            // Divide operator
             case "/":
                 checkOperator();
 
@@ -92,9 +92,19 @@ buttonPressed.forEach((button) => {
                 shouldClearDisplay = true;
                 break;
 
+            // Remainder operator
+            case "%":
+                checkOperator();
+
+                displayCalc.textContent = firstNumber + " % ";
+                operator = remainder;
+                shouldClearDisplay = true;
+                break;
+
+            // Calculates the result and does nothing if no operator is selected
             case "=":
                 if (operator) {
-                    console.log(operate(firstNumber, secondNumber, operator));
+                    console.log(result = operate(firstNumber, secondNumber, operator));
                     display.textContent = roundDecimal(result);
                     displayCalc.textContent += secondNumber;
                     resultShown = true;
@@ -104,6 +114,7 @@ buttonPressed.forEach((button) => {
                 } else {}
                 break;
 
+            // Reset button, removes every input
             case "AC":
                 display.textContent = ""
                 displayCalc.textContent = ""
@@ -113,6 +124,7 @@ buttonPressed.forEach((button) => {
                 operator = 0;
                 break;
 
+            // Backspace button
             case "DEL":
                 if (operator) {
                     secondNumber = secondNumber.slice(0, -1);
@@ -120,6 +132,20 @@ buttonPressed.forEach((button) => {
                 } else {
                 display.textContent = display.textContent.slice(0, -1);
                 firstNumber = firstNumber.slice(0, -1);
+                }
+                break;
+
+            case ".":
+                if (!operator) {
+                    if (!firstNumber.includes(".")) {
+                        firstNumber += ".";
+                        display.textContent += ".";
+                    }
+                } else {
+                    if (!secondNumber.includes(".")) {
+                        secondNumber += ".";
+                        display.textContent += ".";
+                    }
                 }
                 break;
 
