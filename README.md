@@ -5,7 +5,7 @@ A simple calculator built with HTML, CSS, and JavaScript as part of the final pr
 ![Calculator Screenshot](./image/calculator.png)
 
 ## 📂 Live Demo
-https://luukdg.github.io/TOP-Calculator/
+https://luukdg.github.io/odin-calculator/
 Live Demo
 
 ## 🛠 Built With
