@@ -8,7 +8,7 @@ div > p {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "Nunito", sans-serif;
+    font-family: "Roboto Mono", monospace;
     color: #333;
     font-size: 2.5rem;
     margin: 25px;
@@ -44,7 +44,7 @@ div > p {
     margin-bottom: 15px;
     padding: 10px;
     text-align: right;
-    font-family: "Nunito", sans-serif;
+    font-family: "Roboto Mono", monospace;
     font-size: 1.5rem;
     font-weight: 600;
     color: #2e2e2e;
@@ -57,6 +57,7 @@ div > p {
 
 .display-calc {
     font-size: 1rem;
+    font-weight: 300;
 }
 
 .button-row {
@@ -75,9 +76,9 @@ button {
     width: 25%;
     border-radius: 100%;
     border: 0px;
-    font-family: "Nunito", sans-serif;
+    font-family: "Roboto Mono", monospace;
     font-size: 1.3rem;
-    font-weight: 600;
+    font-weight: 300;
     color: #333333;
     transition: transform 0.1s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
